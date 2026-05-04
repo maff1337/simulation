@@ -1,7 +1,10 @@
 from abc import ABC
+from typing import Type
 
 
 class Entity(ABC):
+    target: Type['Entity']
+
     def __str__(self) -> str:
         return f'{self.__class__.__name__.capitalize()}()'
 
@@ -38,12 +41,20 @@ class StaticEntity(Entity, ABC):
     ...
 
 
+class Resource(StaticEntity, ABC):
+    ...
+
+
 class Herbivore(Creature, ABC):
+    target = Resource
+
     def __str__(self) -> str:
         return f'{self.__class__.__name__.capitalize()}(hp={self.hp}, speed={self.speed})'
 
 
 class Carnivore(Creature, ABC):
+    target = Herbivore
+
     def __init__(self, hp: int, speed: int, attack: int) -> None:
         super().__init__(hp, speed)
 
@@ -58,10 +69,6 @@ class Carnivore(Creature, ABC):
 
     def __str__(self) -> str:
         return f'{self.__class__.__name__.capitalize()}(hp={self.hp}, speed={self.speed}, attack={self.attack})'
-
-
-class Resource(StaticEntity, ABC):
-    ...
 
 
 class Fox(Carnivore):
