@@ -1,4 +1,3 @@
-from dataclasses import dataclass
 from random import randrange
 from typing import Optional, Sequence
 
@@ -61,3 +60,22 @@ class World:
                 return entity
 
         return None
+
+    def get_coordinates(self, entity: Entity) -> Optional[Coordinates]:
+        return self._entities.get(entity)
+
+    def get_neighbors(self, coords: Coordinates) -> Sequence[Coordinates]:
+        shifts = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+
+        shifted = [
+            Coordinates(
+                coords.row + shift[0],
+                coords.column + shift[1]
+            )
+            for shift in shifts
+        ]
+
+        return [
+            coords for coords in shifted
+            if 0 <= coords.row < self.rows and 0 <= coords.column < self.columns
+        ]
