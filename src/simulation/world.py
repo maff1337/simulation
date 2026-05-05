@@ -29,9 +29,6 @@ class World:
     def get_entities(self) -> Sequence[Entity]:
         return list(self._entities.keys())
 
-    def get_all_coordinates(self) -> Sequence[Coordinates]:
-        return list(self._entities.values())
-
     def _get_random_coordinates(self) -> Coordinates:
         row = randrange(self._rows)
         column = randrange(self._columns)
@@ -46,6 +43,9 @@ class World:
                 return coords
 
     def add_entity(self, entity: Entity) -> None:
+        if self.is_full():
+            return
+
         coords = self.get_empty_coordinates()
 
         self._entities[entity] = coords
@@ -79,3 +79,9 @@ class World:
             coords for coords in shifted
             if 0 <= coords.row < self.rows and 0 <= coords.column < self.columns
         ]
+
+    def is_full(self) -> bool:
+        return len(self._entities) == self.size()
+
+    def update_coordinates(self, entity: Entity, coords: Coordinates) -> None:
+        self._entities[entity] = coords
