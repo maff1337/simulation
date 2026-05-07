@@ -3,6 +3,7 @@ from collections import deque
 from typing import Protocol, Sequence
 
 from simulation.coordinates import Coordinates
+from simulation.entities import Creature, Resource
 from simulation.world import World
 
 
@@ -34,7 +35,8 @@ class Bfs(PathFinder):
                     continue
 
                 entity = world.get_entity(neighbor)
-                if entity is None:
+                if entity is None or \
+                        (isinstance(entity, (Creature, Resource)) and entity.hp <= 0):
                     queue.append(neighbor)
                     visited.add(neighbor)
 
