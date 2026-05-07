@@ -1,5 +1,5 @@
 from simulation.actions.action import Action
-from simulation.entities import Creature
+from simulation.entities import Creature, Resource
 from simulation.world import World
 
 
@@ -8,7 +8,7 @@ class RemoveEntitiesAction(Action):
         to_remove = []
 
         for entity in world.get_entities():
-            if isinstance(entity, Creature):
+            if isinstance(entity, (Creature, Resource)):
                 if entity.hp <= 0:
                     to_remove.append(entity)
 
