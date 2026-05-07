@@ -29,18 +29,14 @@ class MakeMoveAction(Action):
                     for neighbor in neighbors:
                         target = world.get_entity(neighbor)
 
-                        if target and isinstance(target, entity.target):
+                        if isinstance(target, entity.target) and target.hp > 0:  # type: ignore
                             entity.bite(target)
                             target_found = True
 
                     if not target_found:
                         break
                 else:
-                    moves: int
-                    if len(path) >= entity.action_points:
-                        moves = entity.action_points
-                    else:
-                        moves = len(path)
+                    moves = min(entity.action_points, len(path))
 
                     world.update_coordinates(entity, path[moves-1])
                     entity.action_points -= moves
