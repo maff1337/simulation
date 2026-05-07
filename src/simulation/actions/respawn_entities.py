@@ -1,9 +1,9 @@
 from math import ceil
 from random import random
 
-from simulation.actions.action import Action
-from simulation.factory import Factory
 from simulation.world import World
+from simulation.factory import Factory
+from simulation.actions.action import Action
 
 
 class RespawnEntitesAction(Action):

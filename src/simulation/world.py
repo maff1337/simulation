@@ -1,8 +1,8 @@
 from random import randrange
 from typing import Optional, Sequence
 
-from simulation.coordinates import Coordinates
 from simulation.entities import Entity
+from simulation.coordinates import Coordinates
 
 
 class World:

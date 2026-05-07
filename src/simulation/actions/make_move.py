@@ -1,7 +1,7 @@
-from simulation.actions.action import Action
-from simulation.entities import Creature
-from simulation.path_finder import PathFinder
 from simulation.world import World
+from simulation.entities import Creature
+from simulation.actions.action import Action
+from simulation.path_finder import PathFinder
 
 
 class MakeMoveAction(Action):

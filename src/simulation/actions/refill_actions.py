@@ -1,7 +1,6 @@
-from simulation.actions.action import Action
-from simulation.entities import Creature
-from simulation.factory import Factory
 from simulation.world import World
+from simulation.entities import Creature
+from simulation.actions.action import Action
 
 
 class RefillActionPointsAction(Action):

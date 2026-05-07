@@ -1,6 +1,6 @@
+from simulation.world import World
 from simulation.actions.action import Action
 from simulation.entities import Creature, Resource
-from simulation.world import World
 
 
 class RemoveEntitiesAction(Action):

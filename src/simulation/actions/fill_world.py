@@ -1,8 +1,8 @@
 from math import ceil
-from random import randint, random
+from random import random
 
-from simulation.factory import Factory
 from simulation.world import World
+from simulation.factory import Factory
 from simulation.actions.action import Action
 
 

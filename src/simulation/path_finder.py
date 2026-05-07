@@ -1,10 +1,10 @@
-from abc import abstractmethod
 from collections import deque
+from abc import abstractmethod
 from typing import Protocol, Sequence
 
+from simulation.world import World
 from simulation.coordinates import Coordinates
 from simulation.entities import Creature, Resource
-from simulation.world import World
 
 
 class PathFinder(Protocol):

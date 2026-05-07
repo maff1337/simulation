@@ -1,5 +1,5 @@
-from abc import abstractmethod
 from typing import Protocol
+from abc import abstractmethod
 
 from simulation.world import World
 
