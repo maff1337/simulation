@@ -1,4 +1,4 @@
-from abc import ABC, abstractmethod
+from abc import ABC
 from typing import Type
 
 
@@ -13,9 +13,10 @@ class Entity(ABC):
 
 
 class Creature(Entity, ABC):
-    def __init__(self, hp: int, action_points: int) -> None:
+    def __init__(self, hp: int, action_points: int, attack: int) -> None:
         self._hp = hp
         self._action_points = action_points
+        self._attack = attack
 
     @property
     def hp(self) -> int:
@@ -36,9 +37,16 @@ class Creature(Entity, ABC):
     def action_points(self, value: int) -> None:
         self._action_points = value
 
-    @abstractmethod
+    @property
+    def attack(self) -> int:
+        return self._attack
+
     def bite(self, other) -> None:
-        ...
+        if isinstance(other, self.target):
+            other.hp -= self.attack  # type: ignore
+
+    def __str__(self) -> str:
+        return f'{self.__class__.__name__.capitalize()}(hp={self.hp}, action_points={self.action_points}, attack={self.attack})'
 
 
 class StaticEntity(Entity, ABC):
@@ -64,41 +72,9 @@ class Resource(StaticEntity, ABC):
 class Herbivore(Creature, ABC):
     target = Resource
 
-    def __str__(self) -> str:
-        return f'{self.__class__.__name__.capitalize()}(hp={self.hp}, action_points={self.action_points})'
-
-    def bite(self, other: Resource) -> None:
-        other.hp = 0
-
-        self.action_points -= 1
-
 
 class Carnivore(Creature, ABC):
     target = Herbivore
-
-    def __init__(self, hp: int, action_points: int, attack: int) -> None:
-        super().__init__(hp, action_points)
-
-        self._attack = attack
-
-    @property
-    def attack(self) -> int:
-        return self._attack
-
-    def bite(self, other: Herbivore) -> None:
-        hits = other.hp // self.attack + (other.hp % self.attack != 0)
-
-        if hits <= self.action_points:
-            other.hp -= (self.attack * hits)
-
-            self.action_points -= hits
-        else:
-            other.hp -= (self.attack * self.action_points)
-
-            self.action_points = 0
-
-    def __str__(self) -> str:
-        return f'{self.__class__.__name__.capitalize()}(hp={self.hp}, action_points={self.action_points}, attack={self.attack})'
 
 
 class Fox(Carnivore):
