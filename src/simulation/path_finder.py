@@ -9,15 +9,15 @@ from simulation.entities import Creature, Resource
 
 class PathFinder(Protocol):
     @abstractmethod
-    def find(self, start: Coordinates, world: World) -> Sequence[Coordinates]:
+    def find(self, base_entity: Creature, world: World) -> Sequence[Coordinates]:
         ...
 
 
 class Bfs(PathFinder):
-    def find(self, start: Coordinates, world: World) -> Sequence[Coordinates]:
-        base_entity = world.get_entity(start)
+    def find(self, base_entity: Creature, world: World) -> Sequence[Coordinates]:
+        start = world.get_coordinates(base_entity)
 
-        if base_entity is None:
+        if start is None:
             raise ValueError()
 
         target_type = base_entity.target
