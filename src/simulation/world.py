@@ -6,13 +6,13 @@ from simulation.coordinates import Coordinates
 
 
 class World:
-    def __init__(self, rows: int, columns: int) -> None:
+    def __init__(self, rows: int, columns: int, minsize: int) -> None:
         self._rows = rows
         self._columns = columns
 
         self._entities: dict[Entity, Coordinates] = {}
 
-        if self.size() < 5:
+        if self.size() < minsize:
             raise
 
     @property
