@@ -1,5 +1,5 @@
 from simulation.world import World
-from simulation.entities import Creature
+from simulation.entities import Carnivore, Creature, Herbivore
 from simulation.actions.action import Action
 from simulation.path_finder import PathFinder
 
@@ -20,7 +20,7 @@ class MakeMoveAction(Action):
                 if not coords:
                     raise ValueError()
 
-                path = self._path_finder.find(coords, world)
+                path = self._path_finder.find(entity, world)
 
                 if not len(path):
                     neighbors = world.get_neighbors(coords)
@@ -30,7 +30,20 @@ class MakeMoveAction(Action):
                         target = world.get_entity(neighbor)
 
                         if isinstance(target, entity.target) and target.hp > 0:  # type: ignore
-                            entity.bite(target)
+                            hits = (
+                                target.hp // entity.attack +  # type: ignore
+                                (target.hp % entity.attack != 0)  # type: ignore
+                            )
+
+                            points = min(hits, entity.action_points)
+
+                            while points and target.hp > 0:  # type: ignore
+                                entity.bite(target)
+
+                                entity.action_points -= 1
+
+                                points -= 1
+
                             target_found = True
 
                     if not target_found:
