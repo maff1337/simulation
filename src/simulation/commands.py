@@ -7,7 +7,7 @@ class MainMenuCommands(Enum):
     THIRD = '3'
 
 
-class OngoingMenuCommans(Enum):
+class OngoingMenuCommands(Enum):
     FIRST = '1'
     SECOND = '2'
 
