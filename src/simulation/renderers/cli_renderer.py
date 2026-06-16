@@ -37,12 +37,10 @@ class CliRenderer(Renderer):
     def render_ongoing_menu(self) -> None:
         print(self._phrases['menu']['ongoing']['prompt'])
         print(self._phrases['menu']['ongoing']['menu_options'])
-        print()
 
     def render_onpause_menu(self) -> None:
         print(self._phrases['menu']['onpause']['prompt'])
         print(self._phrases['menu']['onpause']['menu_options'])
-        print()
 
     def render_language_menu(self) -> None:
         print(self._phrases['menu']['language']['prompt'], end='')
