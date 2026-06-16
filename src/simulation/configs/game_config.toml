@@ -1,0 +1,42 @@
+[icons]
+ceil = '🟩'
+tree = '🌳'
+grass = '🌱'
+mountain = '⛰️ '
+fox = '🦊'
+rabbit = '🐰'
+
+[world]
+minsize = 5
+rows = 5
+columns = 5
+
+[coeffs.fox]
+spawn = 0.04
+spawn_chance = 0.5
+respawn = 0.04
+respawn_chance = 0.5
+
+[coeffs.rabbit]
+spawn = 0.04
+spawn_chance = 0.5
+respawn = 0.04
+respawn_chance = 0.5
+
+[coeffs.grass]
+spawn = 0.05
+spawn_chance = 0.5
+respawn = 0.08
+respawn_chance = 0.5
+
+[coeffs.tree]
+spawn = 0.2
+spawn_chance = 0.5
+respawn = 0.01
+respawn_chance = 0.5
+
+[coeffs.mountain]
+spawn = 0.15
+spawn_chance = 0.5
+respawn = 0.01
+respawn_chance = 0.5

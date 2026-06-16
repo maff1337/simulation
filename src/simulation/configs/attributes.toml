@@ -1,0 +1,16 @@
+[fox]
+hp = 7
+action_points = 3
+attack = 2
+
+[rabbit]
+hp = 6
+action_points = 4
+attack = 1
+
+[grass]
+hp = 1
+
+[mountain]
+
+[tree]
