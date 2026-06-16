@@ -1,0 +1,42 @@
+[menu.main]
+welcome = '''Welcome to Simulation
+'''
+menu_options = '''1. Start
+2. Language
+3. Exit
+'''
+prompt = '''
+Your choice: '''
+goodbye = '''
+Goodbye!'''
+
+[menu.onpause]
+prompt = '''
+Your choice:
+'''
+menu_options = '''1. Continue
+2. Exit
+'''
+
+[menu.ongoing]
+prompt = '''
+Your choice:
+'''
+menu_options = '''1. Pause
+2. Exit
+'''
+
+[menu.language]
+prompt = '''Choose language:
+
+1. Russian
+2. English
+'''
+
+[error_messages]
+invalid_input = '''
+Invalid input. Choose one of the options below
+'''
+
+[menu.turn]
+step = 'Step - {step}'

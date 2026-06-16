@@ -1,0 +1,7 @@
+[locales]
+ru = 'src/simulation/configs/locales/ru.toml'
+en = 'src/simulation/configs/locales/en.toml'
+
+[game]
+attributes = 'src/simulation/configs/attributes.toml'
+game_config = 'src/simulation/configs/game_config.toml'
